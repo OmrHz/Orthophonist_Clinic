@@ -1,0 +1,1 @@
+This repository contains the source code and resources for managing a speech therapy practice. It includes features for patient management, appointment scheduling, session documentation, billing, and reporting. The goal is to streamline administrative tasks and enhance the efficiency of running a speech therapy clinic
