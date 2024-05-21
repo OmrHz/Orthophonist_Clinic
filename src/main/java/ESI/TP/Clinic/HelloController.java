@@ -1,4 +1,4 @@
-package org.example.demo;
+package ESI.TP.Clinic;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

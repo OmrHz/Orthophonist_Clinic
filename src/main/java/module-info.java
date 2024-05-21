@@ -11,6 +11,6 @@ module org.example.demo {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens org.example.demo to javafx.fxml;
-    exports org.example.demo;
+    opens ESI.TP.Clinic to javafx.fxml;
+    exports ESI.TP.Clinic;
 }

@@ -1,4 +1,4 @@
-package org.example.demo;
+package ESI.TP.Clinic;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
