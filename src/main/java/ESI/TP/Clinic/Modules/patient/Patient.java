@@ -1,17 +1,24 @@
 package ESI.TP.Clinic.Modules.patient;
 import java.time.LocalDateTime;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 
-import java.util.Scanner;
 public abstract class Patient {
     // les attribus
     static private int cptID=1;
     private int ID;
     private String Nom,Prenom,Adresse,LieuNaissance;
-    private LocalDateTime DateNaissance;
+    private LocalDate DateNaissance;
     private boolean prisEnCharge = false;
     // le constructeur
-    public Patient(String Nom , String Prenom , String Adresse, LocalDateTime DateNaissance,String LieuNaissance ) {
+    public Patient() {
+
+    }
+    public Patient(String Nom , String Prenom , String Adresse, LocalDate DateNaissance,String LieuNaissance ) {
         this.Nom=Nom;
         this.Prenom=Prenom;
         this.Adresse=Adresse;
@@ -53,7 +60,7 @@ public abstract class Patient {
     public String getAdresse() {
         return this.Adresse;
     }
-    public LocalDateTime getDateNaissance() {
+    public LocalDate getDateNaissance() {
         return this.DateNaissance;
     }
     public String getLieuNaissance() {
@@ -79,7 +86,26 @@ public abstract class Patient {
     public boolean getPrisEnCharge() {
         return this.prisEnCharge;
     }
+    //
+    public void saveToFile() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Patient_"+this.getID()+".bin"))) {
+            oos.writeObject(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Method to load a Cabinet object from a file
+    public static Patient loadFromFile(int ID) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Patient_"+ID+".bin"))) {
+            return (Patient) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }
+
 
 

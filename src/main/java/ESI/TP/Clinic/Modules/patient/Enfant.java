@@ -1,13 +1,13 @@
 package ESI.TP.Clinic.Modules.patient;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 public class Enfant extends Patient {
 
     private String ClasseEtude;
     private String NumeroMere;
     private String NumeroPere;
     // le constructeur
-    public Enfant(String Nom , String Prenom , String Adresse, LocalDateTime DateNaissance,String LieuNaissance, String ClasseEtude , String NumeroMere , String NumeroPere) {
+    public Enfant(String Nom , String Prenom , String Adresse, LocalDate DateNaissance,String LieuNaissance, String ClasseEtude , String NumeroMere , String NumeroPere) {
         super(Nom,Prenom,Adresse,DateNaissance,LieuNaissance);
         this.ClasseEtude=ClasseEtude;
         this.NumeroMere=NumeroMere;

@@ -1,11 +1,12 @@
 package ESI.TP.Clinic.Modules.patient;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 
 public class Adulte extends Patient{
     private String Diplome ;
     private String Profession ;
     private String NumeroTelephone;
-    public Adulte(String Nom , String Prenom , String Adresse, LocalDateTime DateNaissance,String LieuNaissance, String Diplome , String Profession , String NumeroTelephone) {
+    public Adulte(String Nom , String Prenom , String Adresse, LocalDate DateNaissance,String LieuNaissance, String Diplome , String Profession , String NumeroTelephone) {
         super(Nom,Prenom,Adresse,DateNaissance,LieuNaissance);
         this.Diplome= Diplome;
         this.Profession=Profession;

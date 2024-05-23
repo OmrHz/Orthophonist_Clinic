@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ESI.TP.Clinic.Controllers.SignUp">
+    <center>
+        <AnchorPane prefHeight="538.0" prefWidth="595.0" BorderPane.alignment="CENTER">
+            <children>
+                <!-- Title -->
+                <Text layoutX="149.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créer Votre Compte" wrappingWidth="363.6433563232422">
+                    <font>
+                        <Font name="Montserrat Bold" size="32.0" />
+                    </font>
+                </Text>
+
+                <!-- Fields and Labels -->
+                <Text layoutX="215.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="44.57600021362305">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="14.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="nomField" layoutX="215.0" layoutY="109.0" prefHeight="27.0" prefWidth="230.0" />
+
+                <Text layoutX="215.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" wrappingWidth="64.57600021362305">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="14.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="prenomField" layoutX="215.0" layoutY="166.0" prefHeight="27.0" prefWidth="232.0" />
+
+                <Text layoutX="217.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="74.57600021362305">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="14.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="adresseField" layoutX="215.0" layoutY="219.0" prefHeight="27.0" prefWidth="230.0" />
+
+                <Text layoutX="215.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero" wrappingWidth="64.57600021362305">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="14.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="numeroField" layoutX="214.0" layoutY="277.0" prefHeight="27.0" prefWidth="232.0" />
+
+                <Text layoutX="215.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="64.57600021362305">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="14.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="emailField" layoutX="215.0" layoutY="339.0" prefHeight="27.0" prefWidth="232.0" />
+
+                <Text layoutX="217.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de Passe" wrappingWidth="101.57600021362305">
+                    <font>
+                        <Font name="Montserrat SemiBold" size="14.0" />
+                    </font>
+                </Text>
+                <PasswordField fx:id="passwordField" layoutX="215.0" layoutY="392.0" prefHeight="27.0" prefWidth="230.0" />
+
+                <!-- Submit Button -->
+                <Button layoutX="202.0" layoutY="432.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="256.0" style="-fx-background-color: #353ee5;" text="S'inscrire" textFill="WHITE" onAction="#handleSubmit">
+                    <font>
+                        <Font name="Montserrat Regular" size="13.0" />
+                    </font>
+                </Button>
+
+                <!-- Existing Account Text -->
+                <Text fill="#0000009c" layoutX="192.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous avez déjà un compte?">
+                    <font>
+                        <Font name="Montserrat Regular" size="13.0" />
+                    </font>
+                </Text>
+                <Text fill="#353ee5" layoutX="381.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se Connecter" underline="true"  onMouseClicked="#handleClick">
+                    <font>
+                        <Font name="Montserrat Regular" size="13.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
