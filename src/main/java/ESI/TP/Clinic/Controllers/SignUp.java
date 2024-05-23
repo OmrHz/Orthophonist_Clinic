@@ -4,6 +4,9 @@ import ESI.TP.Clinic.Modules.orthophoniste.Cabinet;
 import ESI.TP.Clinic.Modules.orthophoniste.Orthophoniste;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -113,19 +116,21 @@ public class SignUp {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+    @FXML
+    public void handleClick(MouseEvent actionEvent) {
+        System.out.println("Mouse clicked");
 
-    public void handleClick(MouseEvent mouseEvent) {
+        // Get the current stage
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Login.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Login");
         try {
-            stage.setScene(new javafx.scene.Scene(loader.load()));
+            currentStage.setScene(new javafx.scene.Scene(loader.load()));
+            currentStage.setTitle("Login Page");
+            currentStage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (this.stage != null) {
-            this.stage.close();
-        }
     }
+
 }
