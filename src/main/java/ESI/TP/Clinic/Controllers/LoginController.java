@@ -36,6 +36,8 @@ public class LoginController {
                     Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
                     Parent root = loader.load();
+                    AccueilController controller = loader.getController();
+                    controller.setOrthophoniste(ort);
                     stage.setScene(new Scene(root));
                     stage.setTitle("Home page");
                     stage.show();

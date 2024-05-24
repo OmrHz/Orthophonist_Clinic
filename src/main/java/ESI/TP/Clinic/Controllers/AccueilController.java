@@ -1,11 +1,20 @@
 package ESI.TP.Clinic.Controllers;
 
+import ESI.TP.Clinic.Modules.orthophoniste.Orthophoniste;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class AccueilController {
+
+    private Orthophoniste ort;
+    @FXML
+    private Text fullname;
+
+
 
     public void HandleSeDeconnecter(MouseEvent event) {
         System.out.println("Mouse clicked");
@@ -21,4 +30,10 @@ public class AccueilController {
             e.printStackTrace();
         }
     }
+
+    public void setOrthophoniste(Orthophoniste ort) {
+        this.ort = ort;
+        this.fullname.setText("DR " + ort.getCompte().getNom() + " " + ort.getCompte().getPrenom());
+    }
+
 }

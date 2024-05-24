@@ -27,7 +27,7 @@
                         <Font name="Montserrat Bold" size="50.0" />
                     </font>
                 </Text>
-                <Text fill="WHITE" layoutX="392.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER">
+                <Text fx:id="fullname" fill="WHITE" layoutX="392.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER">
                     <font>
                         <Font name="Montserrat Regular" size="16.0" />
                     </font>
