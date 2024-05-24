@@ -16,10 +16,10 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="86.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Image/logo-removebg.png" />
+                  <Image url="@../Images/logo.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="37.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear Speech, Bright futures" textAlignment="CENTER" wrappingWidth="244.6433563232422">
+            <Text fill="WHITE" layoutX="58.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ouvrez les portes d'un nouveau dialogue" textAlignment="CENTER" wrappingWidth="202.4033660888672">
                <font>
                   <Font name="Montserrat Bold Italic" size="18.0" />
                </font>
@@ -65,7 +65,7 @@
                 <PasswordField fx:id="passwordField" layoutX="50.0" layoutY="229.0" prefHeight="26.0" prefWidth="254.0" />
 
                 <!-- Login Button -->
-                <Button layoutX="52.0" layoutY="274.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="250.0" style="-fx-background-color: #353ee5;" text="Se Connecter" textFill="WHITE">
+                <Button layoutX="52.0" layoutY="274.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="250.0" style="-fx-background-color: #353ee5;" text="Se Connecter" textFill="WHITE" onAction="#HandleSeConnecter">
                     <font>
                         <Font name="Montserrat Regular" size="13.0" />
                     </font>

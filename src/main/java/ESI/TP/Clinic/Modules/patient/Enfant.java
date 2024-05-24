@@ -1,5 +1,4 @@
 package ESI.TP.Clinic.Modules.patient;
-
 import java.time.LocalDate;
 public class Enfant extends Patient {
 
@@ -12,6 +11,9 @@ public class Enfant extends Patient {
         this.ClasseEtude=ClasseEtude;
         this.NumeroMere=NumeroMere;
         this.NumeroPere=NumeroPere;
+    }
+    public Enfant() {
+
     }
     // setters
     public void setClasseEtude(String ClasseEtude) {
@@ -38,4 +40,3 @@ public class Enfant extends Patient {
 
 
 }
-

@@ -7,7 +7,7 @@ public class Consultation extends RendezVous {
     private String Nom , Prenom ;
     private int Age ;
     private PremierBilanOrthophonique BO ;
-    public Consultation(String duree , String type,String Nom , String Prenom , int Age ) {
+    public Consultation(String duree ,String Nom , String Prenom , int Age ) {
         super(duree);
         this.Nom=Nom;
         this.Prenom=Prenom;

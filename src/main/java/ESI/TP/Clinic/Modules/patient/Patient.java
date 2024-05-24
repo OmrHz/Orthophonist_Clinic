@@ -6,9 +6,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
-
-public abstract class Patient {
+import java.io.*;
+public abstract class Patient implements Serializable{
     // les attribus
+    static final long serialVersionUID=1;
     static private int cptID=1;
     private int ID;
     private String Nom,Prenom,Adresse,LieuNaissance;
@@ -32,6 +33,7 @@ public abstract class Patient {
         this.DateNaissance=DateNaissance;
         cptID++;
     }
+
     // setters
     public void setPrisEnCharge() {
         this.prisEnCharge=true;
@@ -104,6 +106,9 @@ public abstract class Patient {
             return null;
         }
     }
+    //
+
+
 
 }
 

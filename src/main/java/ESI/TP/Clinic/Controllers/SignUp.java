@@ -5,8 +5,6 @@ import ESI.TP.Clinic.Modules.orthophoniste.Orthophoniste;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -14,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class SignUp {
@@ -44,9 +43,7 @@ public class SignUp {
     }
     @FXML
     private void handleSubmit() {
-
-
-        this.setCabinet(Cabinet.loadFromFile());
+        setCabinet(Cabinet.loadFromFile("Cabinet"));
         String nomValue = this.nomField.getText();
         String prenomValue = this.prenomField.getText();
         String emailValue = this.emailField.getText();
@@ -54,38 +51,14 @@ public class SignUp {
         String numeroTelephoneValue = this.numeroField.getText();
         String passwordValue = this.passwordField.getText();
         if (!nomValue.isEmpty() && !prenomValue.isEmpty() && !emailValue.isEmpty() && !adresseValue.isEmpty() && !numeroTelephoneValue.isEmpty() && !passwordValue.isEmpty()) {
-            if (!this.cabinet.emailExists(emailValue)) {
-                this.cabinet.sauvegarderMailPassword(emailValue, passwordValue);
+            if (!cabinet.emailExists(emailValue,cabinet.getNomCabinet())) {
+                cabinet.sauvegarderMailPassword(nomValue,emailValue, passwordValue,cabinet.getNomCabinet());
                 Orthophoniste o = new Orthophoniste(nomValue, prenomValue, adresseValue, numeroTelephoneValue, emailValue, passwordValue);
-                this.showAlert("Orthophonist " + nomValue + " " + prenomValue + " added successfully!");
-
-
-                try {
-                    Throwable var9 = null;
-                    Object var10 = null;
-
-                    try {
-                        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nomValue + ".bin"));
-
-                        try {
-                            oos.writeObject(o);
-                        } finally {
-                            if (oos != null) {
-                                oos.close();
-                            }
-
-                        }
-                    } catch (Throwable var19) {
-                        if (var9 == null) {
-                            var9 = var19;
-                        } else if (var9 != var19) {
-                            var9.addSuppressed(var19);
-                        }
-
-                        throw var9;
-                    }
-                } catch (Throwable var20) {
-                    var20.printStackTrace();
+                showAlert("Orthophonist " + nomValue + " " + prenomValue + " added successfully!");
+                try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(nomValue + ".bin"))) {
+                    oos.writeObject(o);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
                 this.nomField.clear();
@@ -118,12 +91,10 @@ public class SignUp {
     }
     @FXML
     public void handleClick(MouseEvent actionEvent) {
-        System.out.println("Mouse clicked");
-
         // Get the current stage
         Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Login.fxml"));
         try {
             currentStage.setScene(new javafx.scene.Scene(loader.load()));
             currentStage.setTitle("Login Page");

@@ -12,6 +12,9 @@ public class Adulte extends Patient{
         this.Profession=Profession;
         this.NumeroTelephone=NumeroTelephone;
     }
+    public Adulte () {
+
+    }
     // setters
     public void setProfession(String Profession) {
         this.Profession= Profession ;
