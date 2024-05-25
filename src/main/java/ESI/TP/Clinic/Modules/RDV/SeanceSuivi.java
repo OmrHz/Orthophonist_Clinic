@@ -1,8 +1,5 @@
 package ESI.TP.Clinic.Modules.RDV;
-
-
 import ESI.TP.Clinic.Modules.Fiche.FicheDeSuivi;
-
 import java.time.LocalDateTime;
 
 public class SeanceSuivi extends RendezVous {

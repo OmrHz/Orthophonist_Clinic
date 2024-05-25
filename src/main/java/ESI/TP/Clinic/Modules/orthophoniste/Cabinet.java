@@ -12,7 +12,7 @@ import java.util.*;
 public class Cabinet implements Serializable {
     private static final long serialVersionUID = 1L;
     private HashMap<String, ArrayList<String>> listeMailPassword = new HashMap<String, ArrayList<String>>();
-    private final String name="Cabinet";
+    private final String name="Cabinet_Salsa";
     //getter
     public String getNomCabinet() {
         return this.name;

@@ -35,5 +35,4 @@ public class Adulte extends Patient{
     public String getNumeroTelephone() {
         return this.NumeroTelephone;
     }
-
 }

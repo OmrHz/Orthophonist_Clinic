@@ -1,8 +1,5 @@
 package ESI.TP.Clinic.Modules.RDV;
-
-
 import ESI.TP.Clinic.Modules.BO.PremierBilanOrthophonique;
-
 import java.time.LocalDateTime;
 public class Consultation extends RendezVous {
     static final long serialVersionUID=1;
@@ -42,3 +39,4 @@ public class Consultation extends RendezVous {
         return "Consultation";
     }
 }
+

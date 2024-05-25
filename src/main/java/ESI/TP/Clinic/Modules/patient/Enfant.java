@@ -35,8 +35,4 @@ public class Enfant extends Patient {
     public String getNumeroPere() {
         return this.NumeroPere;
     }
-
-
-
-
 }

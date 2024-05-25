@@ -67,6 +67,8 @@ public void setOrthophoniste(Orthophoniste ort) {
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
+            TypeRdvController controller = loader.getController();
+            controller.setOrthophoniste(ort);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");

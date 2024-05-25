@@ -1,5 +1,6 @@
 package ESI.TP.Clinic;
 
+import ESI.TP.Clinic.Modules.orthophoniste.Cabinet;
 import ESI.TP.Clinic.Modules.orthophoniste.Orthophoniste;
 import ESI.TP.Clinic.Modules.patient.Adulte;
 import ESI.TP.Clinic.Modules.patient.Enfant;
@@ -21,55 +22,77 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import static javafx.application.Application.launch;
-
-//public class HelloApplication extends Application
-//{
-//    @Override
-//        public void start(Stage primaryStage) throws Exception {
-//        Orthophoniste ort = new Orthophoniste("chattah","salsabila","blida","0697174425","ms_chattah@esi.dz","1234");
-//
-//        //Orthophoniste ort = new Orthophoniste();
-//        //ort.copyFrom(Orthophoniste.loadOrthophonisteFromFile("chattah"));
-//        LocalDate date = LocalDate.parse("1960-05-22");
-//        Patient Adulte1 = new Adulte("Bencherif","Mohamed","Blida",date,"alger","PrstProba","Pr","0798564735");
-//        date = LocalDate.parse("2016-06-02");
-//        Patient Enfant1 = new Enfant("Benlimam","Amal","El-Oued",date,"Constantine","3emePrimaire","0564852907","0734987654");
-//        //prise en charge et programmer consultation
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-//        LocalDateTime dateTime = LocalDateTime.parse("22/05/2024 10:00", formatter);
-//        ort.priseEnCharge(Enfant1);
-//        ort.ProgrammerConsultation(dateTime, Enfant1);
-//        dateTime = LocalDateTime.parse("02/09/2024 15:00", formatter);
-//        ort.priseEnCharge(Adulte1);
-//        ort.ProgrammerConsultation(dateTime, Enfant1);
-//        dateTime = LocalDateTime.parse("22/10/2024 10:00", formatter);
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/SignUP.fxml"));
-//        Parent root = loader.load();
-//        Scene scene = new Scene(root);
-//        primaryStage.setTitle("Add Orthophonist");
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-//    }
-//
-//        public static void main(String[] args) {
-//            launch(args);
-//        }
-//}
-
- public class HelloApplication extends Application {
-    @Override
+public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Hello.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Rendez-vous");
+        primaryStage.setTitle("Add Orthophonist");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    // le cabinet
+    // Cabinet cabinet = new Cabinet("Cabinet_Salsa");
+     /*  // creer un orthophoniste
+
+     // les patients
+      * */
+
+
+//    for (Map.Entry<Patient, DossierPatient> entry : patients.entrySet()) {
+//        Patient patient = entry.getKey();
+//        DossierPatient dossier = entry.getValue();
+//        System.out.println("Patient: " + patient.getNom() + " " + patient.getPrenom());
+//        // Display patient details
+//        if (patient instanceof Adulte) {
+//            Adulte adulte = (Adulte) patient;
+//            System.out.println("Type: Adulte");
+//            System.out.println("Adresse: " + adulte.getAdresse());
+//            System.out.println("Diplome: " + adulte.getDiplome());
+//            System.out.println("Profession: " + adulte.getProfession());
+//            System.out.println("NumeroTelephone: " + adulte.getNumeroTelephone());
+//        } else if (patient instanceof Enfant) {
+//            Enfant enfant = (Enfant) patient;
+//            System.out.println("Type: Enfant");
+//            System.out.println("Adresse: " + enfant.getAdresse());
+//            System.out.println("ClasseEtude: " + enfant.getClasseEtude());
+//            System.out.println("NumeroMere: " + enfant.getNumeroMere());
+//            System.out.println("NumeroPere: " + enfant.getNumeroPere());
+//        }
+//        // Display dossier details (customize this according to DossierPatient properties)
+//        System.out.println("Dossier details: " + dossier.toString());
+//        System.out.println();
+//    }
+//     ort.ProgrammerConsultation(dateTime, Enfant1);
+//     dateTime = LocalDateTime.parse("02/09/2024 15:00", formatter);
+//     ort.priseEnCharge(Adulte1);
+//     ort.ProgrammerConsultation(dateTime, Adulte1);
+
+
+
+
     public static void main(String[] args) {
         launch(args);
     }
- }
+}
+
+
+
+// public class HelloApplication extends Application {
+//    @Override
+//    public void start(Stage primaryStage) throws Exception {
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Hello.fxml"));
+//        Parent root = loader.load();
+//        Scene scene = new Scene(root);
+//        primaryStage.setTitle("Rendez-vous");
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+//    }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+// }
 
 
 

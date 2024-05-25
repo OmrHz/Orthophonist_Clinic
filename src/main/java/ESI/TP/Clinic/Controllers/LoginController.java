@@ -22,9 +22,10 @@ public class LoginController {
     private PasswordField passwordField;
     private Cabinet cabinet;
     public void HandleSeConnecter(ActionEvent event) {
+        // the default cabinet
+        setCabinet(Cabinet.loadFromFile("Cabinet"));
         String emailValue = emailField.getText();
         String passwordValue = passwordField.getText();
-        setCabinet(Cabinet.loadFromFile("Cabinet"));
         if (cabinet != null) {
 
             if (cabinet.authenticate(emailValue, passwordValue, cabinet.getNomCabinet())) {

@@ -2,10 +2,10 @@ package ESI.TP.Clinic.Modules.RDV;
 
 import ESI.TP.Clinic.Modules.BO.BilanOrthophonique;
 
-import java.io.Serializable;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
-public abstract class RendezVous implements Serializable {
+public abstract class RendezVous implements Serializable{
     final static long serialVersionUID=1L;
     private  String duree , observation;
     private LocalDateTime date;

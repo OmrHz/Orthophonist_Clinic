@@ -43,6 +43,7 @@ public class SignUp {
     }
     @FXML
     private void handleSubmit() {
+        // the default cabinet
         setCabinet(Cabinet.loadFromFile("Cabinet"));
         String nomValue = this.nomField.getText();
         String prenomValue = this.prenomField.getText();

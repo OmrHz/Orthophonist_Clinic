@@ -8,13 +8,13 @@ public class AtelierGroupe extends RendezVous {
     static final long serialVersionUID=1L;
 
     final private String Thematique ;
-    Set<Integer> Patients = new HashSet<Integer> ();
+    private ArrayList<Integer> numerosDossiers = new ArrayList<Integer> ();
     private BilanOrthophonique BO ;
-    public AtelierGroupe(String duree ,String Thematique , HashSet<Patient> Patients,LocalDateTime date) {
+    public AtelierGroupe(String duree ,String Thematique , ArrayList<Integer> PatientsNumbers,LocalDateTime date) {
         super(duree,date);
         this.Thematique=Thematique;
-        for(Patient P: Patients ) {
-            this.Patients.add(P.getID());
+        for(Integer P: PatientsNumbers ) {
+            this.numerosDossiers.add(P);
         }
 
     }
@@ -23,6 +23,9 @@ public class AtelierGroupe extends RendezVous {
         return this.Thematique;
     }
     //
+    public ArrayList<Integer> getnumerosDossiers(){
+        return this.numerosDossiers;
+    }
     @Override
     public String getType() {
         return "Atelier de groupe";
