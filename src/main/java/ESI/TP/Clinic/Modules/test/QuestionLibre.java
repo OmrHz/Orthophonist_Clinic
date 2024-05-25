@@ -7,9 +7,4 @@ public class QuestionLibre extends Question{
         super(enonce);
         this.answer = answer;
     }
-
-    @Override
-    public int getScore() {
-        return 0;
-    }
 }

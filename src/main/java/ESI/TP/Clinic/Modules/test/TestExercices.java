@@ -2,7 +2,7 @@ package ESI.TP.Clinic.Modules.test;
 import java.util.*;
 public class TestExercices extends Test{
     private List<Exercice> exercices;
-    public TestExercices(String nom, String capacite, List<Exercice> exercices) {
+    public TestExercices(String nom, int capacite, List<Exercice> exercices) {
         super(nom, capacite);
         this.exercices = exercices;
     }

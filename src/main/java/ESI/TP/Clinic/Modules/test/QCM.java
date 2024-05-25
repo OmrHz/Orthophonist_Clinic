@@ -10,8 +10,4 @@ public class QCM extends Question{
         this.choices = choices;
     }
 
-    @Override
-    public int getScore() {
-        return 0;
-    }
 }

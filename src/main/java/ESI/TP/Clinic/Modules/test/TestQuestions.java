@@ -2,7 +2,7 @@ package ESI.TP.Clinic.Modules.test;
 import java.util.*;
 public class TestQuestions extends Test{
     private List<Question> questions;
-    public TestQuestions(String nom, String capacite, List<Question> questions) {
+    public TestQuestions(String nom, int capacite, List<Question> questions) {
         super(nom, capacite);
         this.questions = questions;
     }
@@ -20,5 +20,8 @@ public class TestQuestions extends Test{
     }
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+    public void addQuestion(Question question) {
+        this.questions.add(question);
     }
 }

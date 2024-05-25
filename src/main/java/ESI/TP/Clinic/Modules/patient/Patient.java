@@ -7,6 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.io.*;
+import java.util.Objects;
+
 public abstract class Patient implements Serializable{
     // les attribus
     static final long serialVersionUID=1;
@@ -71,13 +73,20 @@ public abstract class Patient implements Serializable{
     public int getID() {
         return this.ID;
     }
-    //redefinir la methode hashcode
-    public int hashCode() {
-        return this.Nom.hashCode();
-    }
-    //redefinir la methode equals
+    @Override
     public boolean equals(Object o) {
-        return (this.Nom == ((Patient)o).Nom);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Patient patient = (Patient) o;
+        return ID == patient.ID &&
+                Objects.equals(Nom, patient.Nom) &&
+                Objects.equals(Prenom, patient.Prenom) &&
+                Objects.equals(DateNaissance, patient.DateNaissance);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, Nom, Prenom, DateNaissance);
     }
     // calculer l'age
     public int calculerAge() {

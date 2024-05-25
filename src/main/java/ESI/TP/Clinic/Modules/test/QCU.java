@@ -1,6 +1,6 @@
 package ESI.TP.Clinic.Modules.test;
 
-import java.util.List;
+import java.util.*;
 
 public class QCU extends Question{
     private String correctAnswer;
@@ -11,9 +11,11 @@ public class QCU extends Question{
         this.correctAnswer = correctAnswer;
         this.choices = choices;
     }
-
-    @Override
-    public int getScore() {
-        return 0;
+    public String getCorrectAnswer() {
+        return correctAnswer;
     }
+    public List<String> getChoices() {
+        return choices;
+    }
+
 }

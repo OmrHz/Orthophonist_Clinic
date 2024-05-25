@@ -3,12 +3,15 @@ package ESI.TP.Clinic.Modules.RDV;
 
 import ESI.TP.Clinic.Modules.BO.PremierBilanOrthophonique;
 
+import java.time.LocalDateTime;
 public class Consultation extends RendezVous {
+    static final long serialVersionUID=1;
+
     private String Nom , Prenom ;
     private int Age ;
     private PremierBilanOrthophonique BO ;
-    public Consultation(String duree ,String Nom , String Prenom , int Age ) {
-        super(duree);
+    public Consultation(String duree ,String Nom , String Prenom , int Age, LocalDateTime date ) {
+        super(duree,date);
         this.Nom=Nom;
         this.Prenom=Prenom;
         this.Age=Age;
@@ -32,5 +35,10 @@ public class Consultation extends RendezVous {
     }
     public int getAge() {
         return this.Age;
+    }
+    //
+    @Override
+    public String getType() {
+        return "Consultation";
     }
 }

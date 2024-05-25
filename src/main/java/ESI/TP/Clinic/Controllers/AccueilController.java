@@ -4,36 +4,175 @@ import ESI.TP.Clinic.Modules.orthophoniste.Orthophoniste;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.event.ActionEvent;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class AccueilController {
+import java.io.IOException;
 
+public class AccueilController {
+    @FXML
+    private Pane topPane;
+
+    @FXML
+    private Text centeredText;
+
+    @FXML
+    private Button nouveauRendezVousButton;
+
+    @FXML
+    private Button dossiersPatientsButton;
+
+    @FXML
+    private Button statistiquesButton;
+
+    @FXML
+    private Button parametresButton;
+
+    @FXML
+    private Button gererTestsAnamnesesButton;
+
+    @FXML
+    private Button agendaButton;
+
+    @FXML
+    private Button seDeconnecterButton;
     private Orthophoniste ort;
     @FXML
     private Text fullname;
 
-
-
-    public void HandleSeDeconnecter(MouseEvent event) {
-        System.out.println("Mouse clicked");
-
-        Stage currStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Login.fxml"));
-        try {
-            currStage.setScene(new javafx.scene.Scene(loader.load()));
-            currStage.setTitle("Add Orthophonist");
-            currStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setOrthophoniste(Orthophoniste ort) {
-        this.ort = ort;
-        this.fullname.setText("DR " + ort.getCompte().getNom() + " " + ort.getCompte().getPrenom());
-    }
-
+public void setOrthophoniste(Orthophoniste ort) {
+    this.ort = ort;
+    this.fullname.setText("DR " + ort.getCompte().getNom() + " " + ort.getCompte().getPrenom());
 }
+    @FXML
+    public void initialize() {
+        // Set the event handlers for the buttons
+        nouveauRendezVousButton.setOnAction(this::handleNouveauRendezVousButtonAction);
+        dossiersPatientsButton.setOnAction(this::handleDossiersPatientsButtonAction);
+        statistiquesButton.setOnAction(this::handleStatistiquesButtonAction);
+        parametresButton.setOnAction(this::handleParametresButtonAction);
+        gererTestsAnamnesesButton.setOnAction(this::handleGererTestsAnamnesesButtonAction);
+        agendaButton.setOnAction(this::handleAgendaButtonAction);
+        seDeconnecterButton.setOnAction(this::handleSeDeconnecterButtonAction);
+    }
+
+    @FXML
+    private void handleNouveauRendezVousButtonAction(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Rendez-vous.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    // Add other button handlers here
+
+    @FXML
+    private void handleDossiersPatientsButtonAction(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();    }
+
+    @FXML
+    private void handleStatistiquesButtonAction(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void handleParametresButtonAction(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void handleGererTestsAnamnesesButtonAction(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void handleAgendaButtonAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void handleSeDeconnecterButtonAction(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Hello.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+}
+
+//}  private Orthophoniste ort;
+//@FXML
+//private Text fullname;
+//public void setOrthophoniste(Orthophoniste ort) {
+//    this.ort = ort;
+//    this.fullname.setText("DR " + ort.getCompte().getNom() + " " + ort.getCompte().getPrenom());
+//}

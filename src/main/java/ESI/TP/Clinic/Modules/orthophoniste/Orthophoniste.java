@@ -31,43 +31,41 @@ public class Orthophoniste implements Serializable {
         }
 
         public void ajouterRendezVous(LocalDateTime date, RendezVous rdv) throws AjoutRdvException {
-            Scanner scanner = new Scanner(System.in);
-            String dateTimeString = scanner.nextLine();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-            LocalDateTime appointmentDateTime = LocalDateTime.parse(dateTimeString, formatter);
-            scanner.close();
+            System.out.println("piroblim");
+
+
             if (agenda.isEmpty()) {
-                agenda.put(appointmentDateTime, rdv);
+                agenda.put(date, rdv);
                 return;
             }
 
-            LocalDateTime previousRDV = agenda.lowerKey(appointmentDateTime);
-            if (previousRDV != null && previousRDV.getYear() == appointmentDateTime.getYear() &&
-                    previousRDV.getMonthValue() == appointmentDateTime.getMonthValue() &&
-                    previousRDV.getDayOfMonth() == appointmentDateTime.getDayOfMonth()) {
-                LocalDateTime nextRDV = agenda.higherKey(appointmentDateTime);
+            LocalDateTime previousRDV = agenda.lowerKey(date);
+            if (previousRDV != null && previousRDV.getYear() == date.getYear() &&
+                    previousRDV.getMonthValue() == date.getMonthValue() &&
+                    previousRDV.getDayOfMonth() == date.getDayOfMonth()) {
+                LocalDateTime nextRDV = agenda.higherKey(date);
 
-                if (appointmentDateTime.getHour() - previousRDV.getHour() < 3 && nextRDV != null &&
-                        nextRDV.getHour() - appointmentDateTime.getHour() < 3)
+                if (date.getHour() - previousRDV.getHour() < 3 && nextRDV != null &&
+                        nextRDV.getHour() - date.getHour() < 3)
                     throw new AjoutRdvException("Creux insuffisant ");
             }
 
-            agenda.put(appointmentDateTime, rdv);
+            agenda.put(date, rdv);
         }
 
-        public void afficherAgenda() {
-            for (Map.Entry<LocalDateTime, RendezVous> entry : agenda.entrySet()) {
-                LocalDateTime key = entry.getKey();
-                RendezVous value = entry.getValue();
-                if (value instanceof AtelierGroupe) {
-                    System.out.println("Date: " + key + ", Thematique: " + ((AtelierGroupe) value).getThematique() + ", Duree: " + ((AtelierGroupe) value).getDuree());
-                } else if (value instanceof Consultation) {
-                    System.out.println("Date: " + key + ", Nom: " + ((Consultation) value).getNom() + ", Duree: " + ((Consultation) value).getDuree());
-                } else if (value instanceof SeanceSuivi) {
-                    System.out.println("Date: " + key + ", Numero dossier: " + ((SeanceSuivi) value).getNumeroDossier() + ", Duree: " + ((SeanceSuivi) value).getDuree());
-                }
-            }
-        }
+//        public void afficherAgenda() {
+//            for (Map.Entry<LocalDateTime, RendezVous> entry : agenda.entrySet()) {
+//                LocalDateTime key = entry.getKey();
+//                RendezVous value = entry.getValue();
+//                if (value instanceof AtelierGroupe) {
+//                    System.out.println("Date: " + key + ", Thematique: " + ((AtelierGroupe) value).getThematique() + ", Duree: " + ((AtelierGroupe) value).duree);
+//                } else if (value instanceof Consultation) {
+//                    System.out.println("Date: " + key + ", Nom: " + ((Consultation) value).getNom() + ", Duree: " + ((Consultation) value).duree);
+//                } else if (value instanceof SeanceSuivi) {
+//                    System.out.println("Date: " + key + ", Numero dossier: " + ((SeanceSuivi) value).getNumeroDossier() + ", Duree: " + ((SeanceSuivi) value).duree);
+//                }
+//            }
+//        }
     }
     private CompteOrthophoniste Compte;
     private Agenda agenda;
@@ -103,10 +101,10 @@ public class Orthophoniste implements Serializable {
         }
     }
 
-    public Orthophoniste(CompteOrthophoniste Compte, Agenda agenda) {
-        this.Compte = Compte;
-        this.agenda = agenda;
-    }
+//    public Orthophoniste(CompteOrthophoniste Compte, Agenda agenda) {
+//        this.Compte = Compte;
+//        this.agenda = agenda;
+//    }
 
     public Orthophoniste(String Nom, String Prenom, String Adresse, String NumeroTelephone, String Email, String MotDePasse) {
         this.Compte = new CompteOrthophoniste(Nom, Prenom, Adresse, NumeroTelephone, Email, MotDePasse);
@@ -120,10 +118,10 @@ public class Orthophoniste implements Serializable {
     }
 
     public void priseEnCharge(Patient patient) {
-        if (patient != null && !patient.getPrisEnCharge()) {
+        if (patient != null && !patient.getPrisEnCharge() && !this.getPatients().containsKey(patient)) {
             DossierPatient d = new DossierPatient(patient);
-            this.addPatients(patient, d);
             patient.setPrisEnCharge();
+            this.addPatients(patient, d);
             patient.saveToFile();
         }
     }
@@ -142,9 +140,9 @@ public class Orthophoniste implements Serializable {
 
         Consultation C;
         if (patient instanceof Adulte) {
-            C = new Consultation("1h30", patient.getNom(), patient.getPrenom(), patient.calculerAge());
+            C = new Consultation("1h30", patient.getNom(), patient.getPrenom(), patient.calculerAge(),date);
         } else if (patient instanceof Enfant) {
-            C = new Consultation("2h30", patient.getNom(), patient.getPrenom(), patient.calculerAge());
+            C = new Consultation("2h30", patient.getNom(), patient.getPrenom(), patient.calculerAge(),date);
         } else {
             return; // Or throw an exception
         }
@@ -158,15 +156,16 @@ public class Orthophoniste implements Serializable {
                 patient.saveToFile();
             }
         } catch (AjoutRdvException e) {
+            System.out.println("piroblim");
             // Handle exception
         }
         catch(Exception e) {
-
+            System.out.println("piroblim");
         }
     }
 
     public void ProgrammerSeanceDeSuivi(LocalDateTime date,int ID, typeSeanceSuivi type) throws AjoutRdvException {
-        SeanceSuivi s = new SeanceSuivi("1h",ID,type) ;
+        SeanceSuivi s = new SeanceSuivi("1h",ID,type,date) ;
         try {
             // il faut ajouter un entier pour la duree de la consultation
             this.agenda.ajouterRendezVous(date, s);
@@ -177,7 +176,7 @@ public class Orthophoniste implements Serializable {
     //
     public void  ProgrammerAtelierDeGroupe(LocalDateTime date , String thematique, HashSet<Patient> patientIds) throws AjoutRdvException {
         // la liste des patients en utilisant le numero de dossier de chacun
-        AtelierGroupe s = new AtelierGroupe("1h",thematique,patientIds) ;
+        AtelierGroupe s = new AtelierGroupe("1h",thematique,patientIds,date) ;
         try {
             this.agenda.ajouterRendezVous(date, s);
         }

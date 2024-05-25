@@ -1,14 +1,15 @@
 package ESI.TP.Clinic.Modules.test;
+import java.io.Serializable;
 import java.util.*;
-public class Exercice {
+public class Exercice implements Serializable {
     private String consigne;
     private String materiel;
     private List<Integer> scores;
 
-    public Exercice(String consigne, String materiel, List<Integer> scores) {
+    public Exercice(String consigne, String materiel) {
         this.consigne = consigne;
         this.materiel = materiel;
-        this.scores = scores;
+        this.scores = new ArrayList<>();
     }
 
     public int getMoyenneScores() {
@@ -40,7 +41,7 @@ public class Exercice {
         return scores;
     }
 
-    public void setScores(List<Integer> scores) {
-        this.scores = scores;
+    public void addScores(int scores) {
+        this.scores.add(scores);
     }
 }
