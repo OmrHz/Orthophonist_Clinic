@@ -30,7 +30,13 @@ public class TypeRdvController {
     private Orthophoniste ort;
     public void setOrthophoniste(Orthophoniste ort) {
         this.ort = ort;
-        this.fullname.setText("DR " + ort.getCompte().getNom() + " " + ort.getCompte().getPrenom());
+        if(ort !=null ){
+            this.fullname.setText("DR " + ort.getCompte().getNom() + " " + ort.getCompte().getPrenom());
+        }else{
+            this.fullname.setText("DR " + " " + " ");
+            System.out.println(" orthophoniste not found in type RDV");
+        }
+
     }
     @FXML
     public void initialize() {
@@ -51,7 +57,8 @@ public class TypeRdvController {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");
         }
-
+        ConsultationController controller = loader.getController();
+        controller.setOrthophoniste(ort);
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);

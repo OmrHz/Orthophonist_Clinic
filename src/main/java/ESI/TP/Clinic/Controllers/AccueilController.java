@@ -44,11 +44,15 @@ public class AccueilController {
     private Orthophoniste ort;
     @FXML
     private Text fullname;
-
-public void setOrthophoniste(Orthophoniste ort) {
-    this.ort = ort;
-    this.fullname.setText("DR " + ort.getCompte().getNom() + " " + ort.getCompte().getPrenom());
-}
+    public void setOrthophoniste(Orthophoniste ort) {
+        this.ort = ort;
+        if(ort !=null ){
+            this.fullname.setText("DR " + ort.getCompte().getNom() + " " + ort.getCompte().getPrenom());
+        }else{
+            this.fullname.setText("DR " + " " + " ");
+            System.out.println(" orthophoniste not found in Accueil");
+        }
+    }
     @FXML
     public void initialize() {
         // Set the event handlers for the buttons
@@ -83,21 +87,22 @@ public void setOrthophoniste(Orthophoniste ort) {
 
     @FXML
     private void handleDossiersPatientsButtonAction(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Patient.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Dossiers.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
+            DossiersController controller = loader.getController();
+            controller.setOrthophoniste(ort);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");
         }
-        PatientControllers controller = loader.getController();
-        controller.setOrthophoniste(ort);
-        Stage newStage = new Stage();
-        newStage.setScene(scene);
-        newStage.setTitle("Patient Details");
-        newStage.show();
-}
+
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     private void handleStatistiquesButtonAction(ActionEvent event) {
