@@ -83,7 +83,7 @@ public void setOrthophoniste(Orthophoniste ort) {
 
     @FXML
     private void handleDossiersPatientsButtonAction(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Patient.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
@@ -91,11 +91,13 @@ public void setOrthophoniste(Orthophoniste ort) {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");
         }
-
-        Button button = (Button) event.getSource();
-        Stage stage = (Stage) button.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();    }
+        PatientControllers controller = loader.getController();
+        controller.setOrthophoniste(ort);
+        Stage newStage = new Stage();
+        newStage.setScene(scene);
+        newStage.setTitle("Patient Details");
+        newStage.show();
+}
 
     @FXML
     private void handleStatistiquesButtonAction(ActionEvent event) {
@@ -170,11 +172,3 @@ public void setOrthophoniste(Orthophoniste ort) {
         stage.show();
     }
 }
-
-//}  private Orthophoniste ort;
-//@FXML
-//private Text fullname;
-//public void setOrthophoniste(Orthophoniste ort) {
-//    this.ort = ort;
-//    this.fullname.setText("DR " + ort.getCompte().getNom() + " " + ort.getCompte().getPrenom());
-//}

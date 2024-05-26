@@ -31,47 +31,6 @@ public class HelloApplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-    // le cabinet
-    // Cabinet cabinet = new Cabinet("Cabinet_Salsa");
-     /*  // creer un orthophoniste
-
-     // les patients
-      * */
-
-
-//    for (Map.Entry<Patient, DossierPatient> entry : patients.entrySet()) {
-//        Patient patient = entry.getKey();
-//        DossierPatient dossier = entry.getValue();
-//        System.out.println("Patient: " + patient.getNom() + " " + patient.getPrenom());
-//        // Display patient details
-//        if (patient instanceof Adulte) {
-//            Adulte adulte = (Adulte) patient;
-//            System.out.println("Type: Adulte");
-//            System.out.println("Adresse: " + adulte.getAdresse());
-//            System.out.println("Diplome: " + adulte.getDiplome());
-//            System.out.println("Profession: " + adulte.getProfession());
-//            System.out.println("NumeroTelephone: " + adulte.getNumeroTelephone());
-//        } else if (patient instanceof Enfant) {
-//            Enfant enfant = (Enfant) patient;
-//            System.out.println("Type: Enfant");
-//            System.out.println("Adresse: " + enfant.getAdresse());
-//            System.out.println("ClasseEtude: " + enfant.getClasseEtude());
-//            System.out.println("NumeroMere: " + enfant.getNumeroMere());
-//            System.out.println("NumeroPere: " + enfant.getNumeroPere());
-//        }
-//        // Display dossier details (customize this according to DossierPatient properties)
-//        System.out.println("Dossier details: " + dossier.toString());
-//        System.out.println();
-//    }
-//     ort.ProgrammerConsultation(dateTime, Enfant1);
-//     dateTime = LocalDateTime.parse("02/09/2024 15:00", formatter);
-//     ort.priseEnCharge(Adulte1);
-//     ort.ProgrammerConsultation(dateTime, Adulte1);
-
-
-
-
     public static void main(String[] args) {
         launch(args);
     }
