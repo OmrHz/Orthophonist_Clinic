@@ -24,6 +24,7 @@ import java.util.Arrays;
 import static javafx.application.Application.launch;
 public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Hello.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);

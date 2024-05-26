@@ -109,8 +109,9 @@ public class ConsultationController {
         datePicker.setValue(null);
         hourComboBox.setValue(null);
         minuteComboBox.setValue(null);
+        showAlert("Feilds are Empty");
     }
-
+    boolean entryFound = false;
     public void handleValider(ActionEvent event) throws AjoutRdvException {
         String Nom  = nomField.getText();
         String Prenom = prenomField.getText();
@@ -123,6 +124,7 @@ public class ConsultationController {
             showAlert("Please fill in all the fields");
             return;
         }
+
         LocalDateTime rdvDate = date.atTime(hour, minute);
         HashMap<Patient, DossierPatient> patientHashMap = this.orthophoniste.getPatients();
         patientHashMap.entrySet().forEach(entry -> {
@@ -132,11 +134,13 @@ public class ConsultationController {
                 if(patient.getNom().equals(Nom) && patient.getPrenom().equals(Prenom)){
                        if (dossier.getListeRendezVous().isEmpty()) {
                            try{
+                               entryFound = true; // Set the flag to true if an entry satisfies the conditions
                            orthophoniste.ProgrammerConsultation(rdvDate, patient);
                            showAlert("Consultation ajouté avec succès");
                            }catch (AjoutRdvException e){
                              showAlert(e.getMessage());
                            } finally {
+                               Orthophoniste.SaveOrthophonisteFromFile(this.orthophoniste.getCompte().getNom(), orthophoniste);
                                try {
                                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
@@ -154,6 +158,9 @@ public class ConsultationController {
                           showAlert("Le patient déja fait ou programmer une consultation");
                        }
            }});
+        if (!entryFound) {
+            showAlert("Aucun patient trouvé avec le nom et prénom spécifiés");
+        }
           }
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

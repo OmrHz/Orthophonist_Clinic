@@ -31,9 +31,8 @@ public class LoginController {
             if (cabinet.authenticate(emailValue, passwordValue, cabinet.getNomCabinet())) {
                 Orthophoniste ort = new Orthophoniste();
                 ort.copyFrom(Orthophoniste.loadOrthophonisteFromFile(cabinet.getListeMailPassword().get(emailValue).get(0)));
-
-
                 try {
+
                     Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
                     Parent root = loader.load();

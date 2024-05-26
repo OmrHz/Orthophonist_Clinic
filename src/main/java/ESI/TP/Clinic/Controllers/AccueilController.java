@@ -91,13 +91,13 @@ public class AccueilController {
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
-            DossiersController controller = loader.getController();
-            controller.setOrthophoniste(ort);
+
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");
         }
-
+        DossiersController controller = loader.getController();
+        controller.setOrthophoniste(ort);
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
@@ -157,6 +157,20 @@ public class AccueilController {
 
     @FXML
     private void handleAgendaButtonAction(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Agenda.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+        AgendaControllers controller = loader.getController();
+        controller.setAgenda(ort.getAgenda());
+        Stage newStage = new Stage();
+        newStage.setTitle("Agenda");
+        newStage.setScene(scene);
+        newStage.show();
 
     }
 

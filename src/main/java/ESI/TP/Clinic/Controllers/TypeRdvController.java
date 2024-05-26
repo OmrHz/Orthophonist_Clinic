@@ -76,7 +76,8 @@ public class TypeRdvController {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");
         }
-
+        RdvSuiviController controller = loader.getController();
+        controller.setOrthophoniste(this.ort);
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
@@ -94,7 +95,8 @@ public class TypeRdvController {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");
         }
-
+       AtelierControllers controller = loader.getController();
+        controller.setOrthophoniste(ort);
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);

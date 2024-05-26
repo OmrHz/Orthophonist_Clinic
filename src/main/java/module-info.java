@@ -10,9 +10,17 @@ module org.example.demo {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires annotations;
+    opens ESI.TP.Clinic.Modules.RDV to javafx.base;
+    opens ESI.TP.Clinic.Modules.Other to javafx.base;
+    opens ESI.TP.Clinic.Modules.orthophoniste to javafx.base;
+    opens ESI.TP.Clinic.Modules.patient to javafx.base;
+    opens ESI.TP.Clinic.Modules.BO to javafx.base;
+    opens ESI.TP.Clinic.Modules.test to javafx.base;
+    opens ESI.TP.Clinic.Modules.Fiche to javafx.base;
     opens ESI.TP.Clinic to javafx.fxml;
     exports ESI.TP.Clinic;
     opens ESI.TP.Clinic.Controllers to javafx.fxml;
     exports ESI.TP.Clinic.Controllers ;
+
 
 }
