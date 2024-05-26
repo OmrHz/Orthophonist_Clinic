@@ -125,6 +125,20 @@ public class DossiersController {
     }
 
     public void HandleAcceder(ActionEvent event) {
-
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/NumDosseir.fxml"));
+      // open new scene and not close the current one
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+        NumDosseirControllers controller = loader.getController();
+        controller.setOrthophoniste(orthophoniste);
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }

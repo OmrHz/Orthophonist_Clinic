@@ -1,5 +1,6 @@
 package ESI.TP.Clinic.Controllers;
 
+import ESI.TP.Clinic.Modules.orthophoniste.Orthophoniste;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,11 +30,12 @@ public class BilanController {
     private Button seDeconnecterButton;
 
     //private List<TestController> testControllers = new ArrayList<>();
+     private Orthophoniste orthophoniste;
+    private Integer numDossier;
 
     @FXML
     public void initialize() {
         // This method is called after the FXML file has been loaded
-        loadInitialQuestions();
         seDeconnecterButton.setOnAction(this::handleSeDeconnecterButtonAction);
         // addTest();
     }
@@ -41,6 +43,7 @@ public class BilanController {
     private void handleSaveButton() {
         // Handle save button action
         // This method will be called when the save button is clicked
+        System.out.println("Save button clicked");
     }
 
 
@@ -96,5 +99,13 @@ public class BilanController {
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void setOrthophoniste(Orthophoniste orthophoniste) {
+        this.orthophoniste = orthophoniste;
+    }
+
+    public void setNumDossier(Integer value) {
+        this.numDossier = value;
     }
 }
