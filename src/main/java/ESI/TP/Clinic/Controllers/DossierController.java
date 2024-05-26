@@ -1,8 +1,11 @@
 package ESI.TP.Clinic.Controllers;
+import ESI.TP.Clinic.Modules.Other.TableDossiers;
 import ESI.TP.Clinic.Modules.orthophoniste.Orthophoniste;
 import ESI.TP.Clinic.Modules.patient.DossierPatient;
 import ESI.TP.Clinic.Modules.patient.Patient;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +19,67 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class DossierController {
-     ;
+    public class TableRDV {
+        private SimpleObjectProperty<String> date;
+        private SimpleObjectProperty<String> heure;
+        private SimpleObjectProperty<String> type;
+
+        public TableRDV(String date, String heure, String type) {
+            this.date = new SimpleObjectProperty<>(date);
+            this.heure = new SimpleObjectProperty<>(heure);
+            this.type = new SimpleObjectProperty<>(type);
+        }
+
+        public String getDate() {
+            return date.get();
+        }
+
+        public SimpleObjectProperty<String> dateProperty() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date.set(date);
+        }
+
+        public String getHeure() {
+            return heure.get();
+        }
+
+        public SimpleObjectProperty<String> heureProperty() {
+            return heure;
+        }
+
+        public void setHeure(String heure) {
+            this.heure.set(heure);
+        }
+
+        public String getType() {
+            return type.get();
+        }
+
+        public SimpleObjectProperty<String> typeProperty() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type.set(type);
+        }
+    }
+    @FXML
+    private TableView<TableRDV> TableRDV;
+
+    @FXML
+    private TableColumn<TableRDV, String> ColDate;
+
+    @FXML
+    private TableColumn<TableRDV, String> ColHeure;
+
+    @FXML
+    private TableColumn<TableRDV, String> Type;
+
     private Orthophoniste orthophoniste;
+    private Integer numDossier;
     public void setOrthophoniste(Orthophoniste orthophoniste) {
         this.orthophoniste = orthophoniste;
     }
@@ -30,6 +92,9 @@ public class DossierController {
         RetourButton.setOnAction(this::handleRetourButtonAction);
         seDeconnecterButton.setOnAction(this::handleSeDeconnecterButtonAction);
         // Set up the columns in the table
+        ColDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        ColHeure.setCellValueFactory(new PropertyValueFactory<>("Heure"));
+        Type.setCellValueFactory(new PropertyValueFactory<>("Type"));
     }
     @FXML
     private void handleRetourButtonAction(ActionEvent event) {
@@ -66,4 +131,21 @@ public class DossierController {
         stage.show();
     }
 
+    public void setNumDossier(Integer value) {
+        this.numDossier = value;
+        ObservableList<TableRDV> table = FXCollections.observableArrayList();
+        HashMap<Patient, DossierPatient> patientHashMap = this.orthophoniste.getPatients();
+        patientHashMap.entrySet().forEach(entry -> {
+            Patient patient = entry.getKey();
+            DossierPatient dossier = entry.getValue();
+            if (dossier.getNumeroDossier()==numDossier) {
+                dossier.getListeRendezVous().forEach(rdv -> {
+                    // Assuming TableRDV is the name of the data model class
+                    TableRDV tableItem = new TableRDV(rdv.getDate().toString(), rdv.getDuree(), rdv.getType());
+                    table.add(tableItem);
+                });
+                TableRDV.setItems(table);
+            }
+        });
+    }
 }

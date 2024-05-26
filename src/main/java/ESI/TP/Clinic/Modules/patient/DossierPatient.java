@@ -1,5 +1,7 @@
 package ESI.TP.Clinic.Modules.patient;
 import ESI.TP.Clinic.Modules.RDV.RendezVous;
+import ESI.TP.Clinic.Modules.orthophoniste.Orthophoniste;
+
 import java.util.*;
 import java.io.*;
 public class DossierPatient implements Serializable {
@@ -63,5 +65,4 @@ public class DossierPatient implements Serializable {
 
         return lastDossierPatient;
     }
-
 }

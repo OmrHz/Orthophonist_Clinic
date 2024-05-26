@@ -38,17 +38,21 @@ public class NumDosseirControllers {
     }
     @FXML
     public void handleValider(ActionEvent event) throws IOException {
+        // Get the current stage
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Hello.fxml"));
-//        BilanController Controllers = loader.getController();
-//        Controllers.setOrthophoniste(orthophoniste);
-//        Controllers.setNumDossier(numComboBox.getValue());
-//        AccueilController controller = loader.getController();
-//        controller.setOrthophoniste(orthophoniste);
-        Button button = (Button) event.getSource();
+
+        // Load the FXML file
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Dossier.fxml"));
         Parent root = loader.load();
+
+        // Get the controller from the loader after loading
+        DossierController dossierController = loader.getController();
+        dossierController.setOrthophoniste(orthophoniste);
+        dossierController.setNumDossier(numComboBox.getValue());
+
+        // Set the scene to the stage
         stage.setScene(new Scene(root));
-        stage.setTitle("Bilan");
+        stage.setTitle("Dossier Patient");
         stage.show();
     }
 

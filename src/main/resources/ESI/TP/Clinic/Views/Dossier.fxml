@@ -101,10 +101,10 @@
                         <Font name="Montserrat SemiBold" size="14.0" />
                     </font>
                 </Text>
-                <TableView layoutX="72.0" layoutY="120.0" prefHeight="233.0" prefWidth="603.0" stylesheets="@../Styles/Styles.css">
+                <TableView fx:id="TableRDV" layoutX="72.0" layoutY="120.0" prefHeight="233.0" prefWidth="603.0" stylesheets="@../Styles/Styles.css">
                     <columns>
                         <TableColumn fx:id="ColDate" prefWidth="155.1360092163086" text="                 Date" />
-                        <TableColumn fx:id="ColHeure" prefWidth="210.4320068359375" text="                          Heure" />
+                        <TableColumn fx:id="ColHeure" prefWidth="210.4320068359375" text="                          Duree" />
                         <TableColumn fx:id="Type" prefWidth="238.84796142578125" text="             Type de Rendez-Vous" />
                     </columns>
                 </TableView>
