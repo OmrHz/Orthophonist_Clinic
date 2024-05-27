@@ -84,6 +84,7 @@ public class RdvSuiviController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Accueil");
         stage.show();
     }
     @FXML
@@ -100,6 +101,7 @@ public class RdvSuiviController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Hello");
         stage.show();
     }
     @FXML
@@ -142,7 +144,7 @@ public class RdvSuiviController {
                 AccueilController controller = loader.getController();
                 controller.setOrthophoniste(this.orthophoniste); // Pass the Orthophoniste object to the controller
                 stage.setScene(new Scene(root));
-                stage.setTitle("Home page");
+                stage.setTitle("Accueil");
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();

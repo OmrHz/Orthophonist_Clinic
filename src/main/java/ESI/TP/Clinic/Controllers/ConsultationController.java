@@ -79,6 +79,7 @@ public class ConsultationController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Accueil");
         stage.show();
     }
 
@@ -97,6 +98,7 @@ public class ConsultationController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Hello");
         stage.show();
     }
 

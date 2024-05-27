@@ -39,7 +39,7 @@ public class LoginController {
                     AccueilController controller = loader.getController();
                     controller.setOrthophoniste(ort);
                     stage.setScene(new Scene(root));
-                    stage.setTitle("Home page");
+                    stage.setTitle("Accueil");
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();

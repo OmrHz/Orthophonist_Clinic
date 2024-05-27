@@ -28,6 +28,8 @@ public class BilanController {
 
     @FXML
     private Button seDeconnecterButton;
+    @FXML
+    private Button RetourButton;
 
     //private List<TestController> testControllers = new ArrayList<>();
      private Orthophoniste orthophoniste;
@@ -37,7 +39,29 @@ public class BilanController {
     public void initialize() {
         // This method is called after the FXML file has been loaded
         seDeconnecterButton.setOnAction(this::handleSeDeconnecterButtonAction);
+        RetourButton.setOnAction(this::handleRetourButtonAction);
+
         // addTest();
+    }
+    @FXML
+    private void handleRetourButtonAction(ActionEvent event) {
+        // Your logic to handle retour button action
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+            AccueilController controller = loader.getController();
+            controller.setOrthophoniste(orthophoniste);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Accueil");
+        stage.show();
     }
     @FXML
     private void handleSaveButton() {
@@ -105,7 +129,4 @@ public class BilanController {
         this.orthophoniste = orthophoniste;
     }
 
-    public void setNumDossier(Integer value) {
-        this.numDossier = value;
-    }
 }

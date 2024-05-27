@@ -62,6 +62,7 @@ public class TypeRdvController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Consultation");
         stage.show();
     }
 
@@ -81,6 +82,7 @@ public class TypeRdvController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("RdvSuivi");
         stage.show();
     }
 
@@ -100,6 +102,7 @@ public class TypeRdvController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Atelier");
         stage.show();
     }
 
@@ -118,6 +121,7 @@ public class TypeRdvController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Login");
         stage.show();
     }
 }

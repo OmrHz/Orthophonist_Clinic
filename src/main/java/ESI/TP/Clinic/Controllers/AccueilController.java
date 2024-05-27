@@ -81,6 +81,7 @@ public class AccueilController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Nouveau Rendez-vous");
         stage.show();
     }
     // Add other button handlers here
@@ -101,12 +102,13 @@ public class AccueilController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Dossiers Patients");
         stage.show();
     }
 
     @FXML
     private void handleStatistiquesButtonAction(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Stat.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
@@ -114,16 +116,18 @@ public class AccueilController {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");
         }
-
+        StatisticsController controller = loader.getController();
+        controller.setOrthophoniste(ort);
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Accueil");
         stage.show();
     }
 
     @FXML
     private void handleParametresButtonAction(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Param.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
@@ -131,16 +135,18 @@ public class AccueilController {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");
         }
-
+        ParametresController controller = loader.getController();
+        controller.setOrthophoniste(ort);
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Accueil");
         stage.show();
     }
 
     @FXML
     private void handleGererTestsAnamnesesButtonAction(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Accueil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Epreuves.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
@@ -148,10 +154,12 @@ public class AccueilController {
             e.printStackTrace();
             System.out.println("Couldn't load FXML file");
         }
-
+        EpreuvesController controller = loader.getController();
+        controller.setOrthophoniste(ort);
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Accueil");
         stage.show();
     }
 
@@ -188,6 +196,7 @@ public class AccueilController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Hello");
         stage.show();
     }
 }

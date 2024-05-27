@@ -19,6 +19,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 public class Orthophoniste implements Serializable {
     private static final long serialVersionUID = 1L;
+
     public class Agenda implements Serializable {
         private static final long serialVersionUID = 1L;
         private NavigableMap<LocalDateTime, RendezVous> agenda=new TreeMap<LocalDateTime, RendezVous>();

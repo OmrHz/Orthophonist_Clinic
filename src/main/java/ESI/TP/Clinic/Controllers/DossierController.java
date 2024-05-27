@@ -13,12 +13,39 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.TableView;
+
+
 import java.io.IOException;
 import java.util.HashMap;
 
 public class DossierController {
+    @FXML
+    private Text nomPatient;
+    @FXML
+    private Text lastname;
+
+    public void AccederBilan(ActionEvent event) {
+        //go to the bilan page
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ESI/TP/Clinic/Views/Bilan.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Couldn't load FXML file");
+        }
+        BilanController controller = loader.getController();
+        controller.setOrthophoniste(this.orthophoniste);
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Bilan");
+        stage.show();
+    }
+
     public class TableRDV {
         private SimpleObjectProperty<String> date;
         private SimpleObjectProperty<String> heure;
@@ -80,8 +107,10 @@ public class DossierController {
 
     private Orthophoniste orthophoniste;
     private Integer numDossier;
+    @FXML
     public void setOrthophoniste(Orthophoniste orthophoniste) {
         this.orthophoniste = orthophoniste;
+        lastname.setText(" DR "+ orthophoniste.getCompte().getNom());
     }
     @FXML
     private Button RetourButton;
@@ -128,9 +157,10 @@ public class DossierController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Hello");
         stage.show();
     }
-
+   @FXML
     public void setNumDossier(Integer value) {
         this.numDossier = value;
         ObservableList<TableRDV> table = FXCollections.observableArrayList();
@@ -143,6 +173,9 @@ public class DossierController {
                     // Assuming TableRDV is the name of the data model class
                     TableRDV tableItem = new TableRDV(rdv.getDate().toString(), rdv.getDuree(), rdv.getType());
                     table.add(tableItem);
+                    // set nom patient
+                    nomPatient.setText("Dossier de "+ patient.getNom());
+
                 });
                 TableRDV.setItems(table);
             }

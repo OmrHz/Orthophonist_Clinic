@@ -90,6 +90,7 @@ public class AtelierControllers {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Accueil");
         stage.show();
     }
 
@@ -107,6 +108,7 @@ public class AtelierControllers {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Hello");
         stage.show();
     }
     public void handleValider(ActionEvent event){

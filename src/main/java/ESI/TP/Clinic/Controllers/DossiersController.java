@@ -12,8 +12,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.TableView;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -29,10 +31,13 @@ public class DossiersController {
     private TableColumn<TableDossiers,Integer>  ageColumn;
     @FXML
     private TableColumn<TableDossiers,Integer>  numDossierColumn;
+    @FXML
+    private Text lastname;
     private Orthophoniste orthophoniste;
     @FXML
     public void setOrthophoniste(Orthophoniste orthophoniste) {
         this.orthophoniste = orthophoniste;
+        lastname.setText(" DR "+orthophoniste.getCompte().getNom());
         populateTableView();
     }
     @FXML
@@ -105,6 +110,7 @@ public class DossiersController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("Accueil");
         stage.show();
     }
     @FXML
@@ -139,6 +145,7 @@ public class DossiersController {
         Button button = (Button) event.getSource();
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setScene(scene);
+        stage.setTitle("NumDossier");
         stage.show();
     }
 }

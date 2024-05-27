@@ -37,7 +37,7 @@ public class PatientControllers {
         EnfantControllers controller = loader.getController();
         controller.setOrthophoniste(orthophoniste);
         stage.setScene(new Scene(root));
-        stage.setTitle("Sign-Up");
+        stage.setTitle("Enfant");
         stage.show();
     }
 
@@ -53,7 +53,7 @@ public class PatientControllers {
         AdulteControllers controller = loader.getController();
         controller.setOrthophoniste(orthophoniste);
         stage.setScene(new Scene(root));
-        stage.setTitle("Sign-Up");
+        stage.setTitle("Adulte");
         stage.show();
     }
 }

@@ -66,4 +66,15 @@ public class CompteOrthophoniste implements Serializable{
     }
 
 
+    public void setPhone(String text) {
+        this.NumeroTelephone = text;
+    }
+
+    public void setEmail(String text) {
+        this.AdresseEMail = text;
+    }
+
+    public void setPassword(String text) {
+        this.MotDePasse = text;
+    }
 }
